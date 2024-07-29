@@ -3,6 +3,9 @@ import { Saira } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { navigation } from "@/lib/config";
+import { classNames } from "@/lib/util";
+import { RootLayoutComponent } from "@/components/root-layout";
 
 const dmSans = Saira({ subsets: ["latin"] });
 
@@ -18,14 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
-      <body className={dmSans.className}>
-        <div className="bg-white">
-          <Header />
-          <main className="isolate">{children}</main>
-
-          <Footer />
-        </div>
+    <html lang="de" className="h-full bg-white">
+      <body className={classNames(dmSans.className, "h-full")}>
+        <RootLayoutComponent>{children}</RootLayoutComponent>
       </body>
     </html>
   );
